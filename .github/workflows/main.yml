@@ -1,16 +1,19 @@
-# This tells GitHub when to run the action: every time you push code
+name: Run Python Script
+
 on: [push]
 
 jobs:
-  say-hello:
-    runs-on: windows-latest  # Runs on a Microsoft-hosted Windows virtual machine
+  run-python:
+    runs-on: ubuntu-latest # You can use Linux, Windows, or macOS
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Print a greeting
-        run: echo "Hello from Windows 11 and GitHub Actions! Your code update was received successfully."
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-      - name: Show current date and time
-        run: Get-Date
+      - name: Run Python file
+        run: python hello.py
