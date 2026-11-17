@@ -1,0 +1,16 @@
+# This tells GitHub when to run the action: every time you push code
+on: [push]
+
+jobs:
+  say-hello:
+    runs-on: windows-latest  # Runs on a Microsoft-hosted Windows virtual machine
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print a greeting
+        run: echo "Hello from Windows 11 and GitHub Actions! Your code update was received successfully."
+
+      - name: Show current date and time
+        run: Get-Date
